@@ -34,7 +34,7 @@ const Tab = createBottomTabNavigator();
 function MyTabs() {
   return (
     <Tab.Navigator
-      initialRouteName="Schedul"
+      initialRouteName="Schedule"
       screenOptions={{
         tabBarActiveTintColor: '#e91e63',
       }}

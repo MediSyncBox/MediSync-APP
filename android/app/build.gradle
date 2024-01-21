@@ -117,3 +117,13 @@ dependencies {
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+
+// project.ext.vectoricons = [
+//     iconFontNames: [ 'FontAwesome.ttf'] // Name of the font files you want to copy
+// ]
+
+// apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+// //或者直接引入全部
+//apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"

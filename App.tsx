@@ -6,8 +6,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const Tab = createBottomTabNavigator();
 
-function ScheduleScreen() {
-  return <View><Text>Schedule</Text></View>;
+function HomeScreen() {
+  return <View><Text>Home</Text></View>;
 }
 
 function SettingsScreen() {
@@ -23,38 +23,29 @@ function App() {
 
     <NavigationContainer>
       <Tab.Navigator
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName;
+  screenOptions={({ route }) => ({
+    tabBarIcon: ({ focused, color, size }) => {
+      let iconName;
 
-            if (route.name === 'Schedule') {
-              iconName = 'home-outline';
-            } else if (route.name === 'Settings') {
-              iconName = 'settings-outline';
-            } else if (route.name === 'Profile') {
-              iconName = 'person-outline';
-            }
+      if (route.name === 'Home') {
+        iconName = 'home-outline';
+      } else if (route.name === 'Settings') {
+        iconName = 'settings-outline';
+      } else if (route.name === 'Profile') {
+        iconName = 'person-outline';
+      }
 
-            return <Ionicons name={iconName} size={size} color={color} />;
-          },
-          tabBarActiveTintColor: '#80bfff',
-          tabBarInactiveTintColor: 'gray',
-          tabBarStyle: {
-            display: "flex",
-            height: 50, 
-          },
-          tabBarItemStyle: {
-            justifyContent: 'center', 
-            paddingVertical: 10,
-          },
-          tabBarLabel: () => null, 
-        })}
-      >
-        <Tab.Screen name="Schedule" component={ScheduleScreen} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
-        <Tab.Screen name="Profile" component={ProfileScreen} />
-      </Tab.Navigator>
-
+      return <Ionicons name={iconName} size={size} color={color} />;
+    },
+    tabBarActiveTintColor: '#80bfff',  
+    tabBarInactiveTintColor: 'gray',  
+    tabBarStyle: [{ display: "flex" }, null],
+  })}
+>
+  <Tab.Screen name="Home" component={HomeScreen} />
+  <Tab.Screen name="Settings" component={SettingsScreen} />
+  <Tab.Screen name="Profile" component={ProfileScreen} />
+</Tab.Navigator>
 
 
     </NavigationContainer>

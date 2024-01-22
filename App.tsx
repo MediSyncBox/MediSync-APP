@@ -6,8 +6,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const Tab = createBottomTabNavigator();
 
-function HomeScreen() {
-  return <View><Text>Home</Text></View>;
+function ScheduleScreen() {
+  return <View><Text>Schedule</Text></View>;
 }
 
 function SettingsScreen() {
@@ -27,7 +27,7 @@ function App() {
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
 
-            if (route.name === 'Home') {
+            if (route.name === 'Schedule') {
               iconName = 'home-outline';
             } else if (route.name === 'Settings') {
               iconName = 'settings-outline';
@@ -50,7 +50,7 @@ function App() {
           tabBarLabel: () => null, 
         })}
       >
-        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Schedule" component={ScheduleScreen} />
         <Tab.Screen name="Settings" component={SettingsScreen} />
         <Tab.Screen name="Profile" component={ProfileScreen} />
       </Tab.Navigator>

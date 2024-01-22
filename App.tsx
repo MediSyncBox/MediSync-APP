@@ -41,13 +41,13 @@ function App() {
           tabBarInactiveTintColor: 'gray',
           tabBarStyle: {
             display: "flex",
-            height: 50, 
+            height: 50,
           },
           tabBarItemStyle: {
-            justifyContent: 'center', 
+            justifyContent: 'center',
             paddingVertical: 10,
           },
-          tabBarLabel: () => null, 
+          tabBarLabel: () => null,
         })}
       >
         <Tab.Screen name="Home" component={HomeScreen} />

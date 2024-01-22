@@ -37,7 +37,7 @@ function App() {
 
       return <Ionicons name={iconName} size={size} color={color} />;
     },
-    tabBarActiveTintColor: 'tomato',  
+    tabBarActiveTintColor: '#80bfff',  
     tabBarInactiveTintColor: 'gray',  
     tabBarStyle: [{ display: "flex" }, null],
   })}

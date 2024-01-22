@@ -1,54 +1,58 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Text, View } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import { ApplicationProvider, BottomNavigation, BottomNavigationTab, Layout, Text } from '@ui-kitten/components';
+import * as eva from '@eva-design/eva'; // Import Eva Design System
 
-const Tab = createBottomTabNavigator();
+const { Navigator, Screen } = createBottomTabNavigator();
 
-function HomeScreen() {
-  return <View><Text>Home</Text></View>;
+function UsersScreen() {
+  return (
+    <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text category='h1'>USERS</Text>
+    </Layout>
+  );
 }
 
-function SettingsScreen() {
-  return <View><Text>Settings</Text></View>;
+function OrdersScreen() {
+  return (
+    <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text category='h1'>ORDERS</Text>
+    </Layout>
+  );
 }
 
-function ProfileScreen() {
-  return <View><Text>Profile</Text></View>;
+function AccountScreen() {
+  return (
+    <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text category='h1'>ACCOUNT</Text>
+    </Layout>
+  );
+}
+
+function BottomTabBar({ navigation, state }) {
+  return (
+    <BottomNavigation
+      selectedIndex={state.index}
+      onSelect={index => navigation.navigate(state.routeNames[index])}>
+      <BottomNavigationTab title='USERS'/>
+      <BottomNavigationTab title='ORDERS'/>
+      <BottomNavigationTab title='ACCOUNT'/>
+    </BottomNavigation>
+  );
 }
 
 function App() {
   return (
-
-    <NavigationContainer>
-      <Tab.Navigator
-  screenOptions={({ route }) => ({
-    tabBarIcon: ({ focused, color, size }) => {
-      let iconName;
-
-      if (route.name === 'Home') {
-        iconName = 'home-outline';
-      } else if (route.name === 'Settings') {
-        iconName = 'settings-outline';
-      } else if (route.name === 'Profile') {
-        iconName = 'person-outline';
-      }
-
-      return <Ionicons name={iconName} size={size} color={color} />;
-    },
-    tabBarActiveTintColor: '#80bfff',  
-    tabBarInactiveTintColor: 'gray',  
-    tabBarStyle: [{ display: "flex" }, null],
-  })}
->
-  <Tab.Screen name="Home" component={HomeScreen} />
-  <Tab.Screen name="Settings" component={SettingsScreen} />
-  <Tab.Screen name="Profile" component={ProfileScreen} />
-</Tab.Navigator>
-
-
-    </NavigationContainer>
+    <ApplicationProvider {...eva} theme={eva.light}>
+          <NavigationContainer>
+            <Navigator tabBar={props => <BottomTabBar {...props} />} >
+              <Screen name='Users' component={UsersScreen}/>
+              <Screen name='Orders' component={OrdersScreen}/>
+              <Screen name='Accounts' component={AccountScreen}/>
+            </Navigator>
+          </NavigationContainer>
+        </ApplicationProvider>
   );
 }
 
